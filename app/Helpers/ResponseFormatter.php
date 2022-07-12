@@ -18,7 +18,7 @@ class ResponseFormatter
             'status' => 'success',
             'message' => null,
         ],
-        'data' => null,
+        'response' => null,
     ];
 
     /**
@@ -27,13 +27,7 @@ class ResponseFormatter
     public static function success($data = null, $message = null)
     {
         self::$response['meta']['message'] = $message;
-        self::$response['data'] = $data;
-
-        if ($data->current_page) {
-            self::$response['data'] = $data->data;
-            unset($data->data);
-            self::$response['pagination'] = $data;
-        };
+        self::$response['response'] = $data;
 
         return response()->json(self::$response, self::$response['meta']['code']);
     }
