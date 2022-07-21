@@ -29,11 +29,11 @@ class UserController extends Controller
             }
 
             // Generate token
-            $toketResult = $user->createToken('authToken')->plainTextToken;
+            $tokenResult = $user->createToken('authToken')->plainTextToken;
 
             // Return response
             return ResponseFormatter::success([
-                'access_token' => $toketResult,
+                'access_token' => $tokenResult,
                 'token_type' => 'Bearer',
                 'user' => $user
             ], 'Login success');
