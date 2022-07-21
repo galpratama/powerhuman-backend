@@ -18,8 +18,8 @@ class UserController extends Controller
         try {
             // Validate request
             $request->validate([
-                'email' => 'required|email',
-                'password' => 'required',
+                'email' => ['required', 'email'],
+                'password' => ['required'],
             ]);
 
             // Find user by email
