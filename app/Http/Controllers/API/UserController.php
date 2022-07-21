@@ -23,7 +23,7 @@ class UserController extends Controller
             ]);
 
             // Find user by email
-            $user = User::where('email', $request->email)->first();
+            $user = User::where('email', $request->email)->firstOrFail();
             if (!Hash::check($request->password, $user->password)) {
                 throw new Exception('Invalid password');
             }
